@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+
+{% block title %}QUINA - Estatísticas e Análises{% endblock %}
+
+{% block content %}
+<div class="container">
+    <!-- Último Resultado -->
+    <div class="card">
+        <div class="card-header">
+            <h2 class="card-title">🎯 Último Concurso</h2>
+            <button class="btn btn-primary" onclick="atualizarDados()">
+                🔄 Atualizar Dados
+            </button>
+        </div>
+        <div id="ultimo-resultado" class="loading">
+            <div class="spinner"></div>
+            <p>Carregando último resultado...</p>
+        </div>
+    </div>
+
+    <!-- Estatísticas Gerais -->
+    <div class="card">
+        <div class="card-header">
+            <h2 class="card-title">📊 Estatísticas Gerais</h2>
+        </div>
+        <div id="estatisticas-gerais" class="loading">
+            <div class="spinner"></div>
+            <p>Carregando estatísticas...</p>
+        </div>
+    </div>
+
+    <!-- Números Mais Frequentes -->
+    <div class="card">
+        <div class="card-header">
+            <h2 class="card-title">🔥 Top 20 - Números Mais Frequentes</h2>
+        </div>
+        <div id="numeros-frequentes" class="loading">
+            <div class="spinner"></div>
+            <p>Carregando frequências...</p>
+        </div>
+    </div>
+
+    <!-- Números Mais Atrasados -->
+    <div class="card">
+        <div class="card-header">
+            <h2 class="card-title">⏰ Top 20 - Números Mais Atrasados</h2>
+        </div>
+        <div id="numeros-atrasados" class="loading">
+            <div class="spinner"></div>
+            <p>Carregando atrasos...</p>
+        </div>
+    </div>
+
+    <!-- Análise por Posição -->
+    <div class="card">
+        <div class="card-header">
+            <h2 class="card-title">📍 Análise por Posição de Sorteio</h2>
+        </div>
+        <p style="margin-bottom: 1rem; color: #666;">
+            Mostra quais números aparecem mais em cada posição do sorteio (1ª, 2ª, 3ª, 4ª, 5ª)
+        </p>
+        <div id="analise-posicao" class="loading">
+            <div class="spinner"></div>
+            <p>Carregando análise posicional...</p>
+        </div>
+    </div>
+
+    <!-- Análise por Faixa -->
+    <div class="card">
+        <div class="card-header">
+            <h2 class="card-title">📊 Análise por Faixa de Dezenas</h2>
+        </div>
+        <div id="analise-faixa" class="loading">
+            <div class="spinner"></div>
+            <p>Carregando análise por faixa...</p>
+        </div>
+    </div>
+
+    <!-- Distribuição Pares/Ímpares -->
+    <div class="card">
+        <div class="card-header">
+            <h2 class="card-title">⚖️ Distribuição Pares e Ímpares</h2>
+        </div>
+        <div id="pares-impares" class="loading">
+            <div class="spinner"></div>
+            <p>Carregando distribuição...</p>
+        </div>
+    </div>
+
+    <!-- Análise por Dígito -->
+    <div class="card">
+        <div class="card-header">
+            <h2 class="card-title">🔢 Análise por Dígito Final</h2>
+        </div>
+        <div id="analise-digito" class="loading">
+            <div class="spinner"></div>
+            <p>Carregando análise por dígito...</p>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    // Carrega dados ao carregar a página
+    document.addEventListener('DOMContentLoaded', function() {
+        carregarUltimoResultado();
+        carregarEstatisticas();
+    });
+</script>
+{% endblock %}

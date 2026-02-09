@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+
+{% block title %}QUINA - Gerador de Palpites{% endblock %}
+
+{% block content %}
+<div class="container">
+    <!-- Gerador de Palpites -->
+    <div class="card">
+        <div class="card-header">
+            <h2 class="card-title">🎲 Gerador de Palpites</h2>
+        </div>
+        
+        <form id="form-palpites" onsubmit="gerarPalpites(event)">
+            <div class="form-group">
+                <label for="estrategia">Estratégia:</label>
+                <select id="estrategia" name="estrategia" required>
+                    <option value="equilibrada">Equilibrada - Mix de frequentes e atrasados</option>
+                    <option value="agressiva">Agressiva - Prioriza números frequentes</option>
+                    <option value="conservadora">Conservadora - Prioriza números atrasados</option>
+                    <option value="mista">Mista - Combina múltiplas estratégias</option>
+                    <option value="atrasados">Atrasados - Foca em números com maior atraso</option>
+                    <option value="por_faixa">Por Faixa - Distribui por faixas de dezenas</option>
+                    <option value="por_posicao">Por Posição - Usa análise posicional</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="quantidade_numeros">Quantidade de Números (5-15):</label>
+                <input type="number" id="quantidade_numeros" name="quantidade_numeros" 
+                       min="5" max="15" value="5" required>
+            </div>
+
+            <div class="form-group">
+                <label for="quantidade_jogos">Quantidade de Jogos (1-100):</label>
+                <input type="number" id="quantidade_jogos" name="quantidade_jogos" 
+                       min="1" max="100" value="3" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary">
+                ✨ Gerar Palpites
+            </button>
+        </form>
+
+        <div id="resultado-palpites" style="margin-top: 2rem;"></div>
+    </div>
+
+    <!-- Conferir Palpite -->
+    <div class="card">
+        <div class="card-header">
+            <h2 class="card-title">🔍 Conferir Palpite</h2>
+        </div>
+        
+        <form id="form-conferir" onsubmit="conferirPalpite(event)">
+            <div class="form-group">
+                <label for="numeros_conferir">Seus Números (separados por vírgula):</label>
+                <input type="text" id="numeros_conferir" name="numeros_conferir" 
+                       placeholder="Ex: 5, 12, 23, 45, 67" required>
+            </div>
+
+            <div class="form-group">
+                <label for="numero_concurso">Número do Concurso:</label>
+                <input type="number" id="numero_concurso" name="numero_concurso" 
+                       min="1" placeholder="Ex: 6792" required>
+            </div>
+
+            <button type="submit" class="btn btn-secondary">
+                ✅ Conferir
+            </button>
+        </form>
+
+        <div id="resultado-conferencia" style="margin-top: 2rem;"></div>
+    </div>
+
+    <!-- Informações sobre Estratégias -->
+    <div class="card">
+        <div class="card-header">
+            <h2 class="card-title">ℹ️ Sobre as Estratégias</h2>
+        </div>
+        
+        <div style="line-height: 1.8;">
+            <p><strong>🎯 Equilibrada:</strong> Combina números frequentes com atrasados para um jogo balanceado.</p>
+            <p><strong>🔥 Agressiva:</strong> Aposta nos números que mais aparecem historicamente.</p>
+            <p><strong>⏰ Conservadora:</strong> Foca nos números que estão há mais tempo sem sair.</p>
+            <p><strong>🎨 Mista:</strong> Usa múltiplas estratégias combinadas para diversificar.</p>
+            <p><strong>⏳ Atrasados:</strong> Escolhe especificamente os números com maior atraso.</p>
+            <p><strong>📊 Por Faixa:</strong> Distribui os números proporcionalmente entre as faixas (01-20, 21-40, 41-60, 61-80).</p>
+            <p><strong>📍 Por Posição:</strong> Usa a análise de frequência por posição de sorteio.</p>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    // Scripts de palpites carregados automaticamente
+</script>
+{% endblock %}
